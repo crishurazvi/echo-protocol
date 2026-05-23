@@ -730,11 +730,11 @@ except Exception:
 query_data = unquote_plus(query_data or "")
 
 example = (
-    "data=23.05.2026;nume=Popescu;prenume=Ion;varsta=71;salon=USIC;"
+    "data=23.05.2026;nume=Popescu;prenume=Ion;varsta=71;salon=;"
     "aoinel=2.1;aoasc=3.4;dao=1.8;as=4.0;vd=2.8;siv=1.1;dtdvs=5.2;"
     "dtsvs=3.4;ppvs=1.0;fevs=60;functiediastolica=Normala;im=I;ia=Nu;it=I;"
     "tapse=22;paps=30;vci=1.8;cinetica=normala;pericard=absent;"
-    "concluzie=FEVS pastrata. Fara valvulopatii semnificative."
+    "concluzie="
 )
 
 st.title("Protocol ecocardiografie interactiv")
