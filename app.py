@@ -691,14 +691,14 @@ def render_protocol(data: dict) -> str:
         da {cb(data, "colapsvci", "da")}
       </div>
 
-      <div style="margin-top:7mm;">
+      <div style="margin-top:2mm;">
         Observații, alte măsurători<br>
         {area(data, "observatii", 3)}
       </div>
 
-      <div style="margin-top:5mm;">
+      <div style="margin-top:2mm;">
         <b>Concluzie</b><br>
-        {area(data, "concluzie", 3, "conclusion")}
+        {area(data, "concluzie", 4, "conclusion", "133mm")}
       </div>
 
       <div class="signature">Medic examinator<br>{inp(data, "medic", "45mm")}</div>
