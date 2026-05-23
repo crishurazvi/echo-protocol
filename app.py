@@ -410,7 +410,7 @@ def render_protocol(data: dict) -> str:
           <div>Coordonator prof dr Adina Ionac</div>
         </div>
         <div>
-          <div class="eacvi">♥ EACVI</div>
+          <div class="eacvi">EACVI</div>
           <div class="eacvi-small">acreditare europeană 2012, re-acreditare 2022</div>
         </div>
       </div>
@@ -421,8 +421,8 @@ def render_protocol(data: dict) -> str:
         Data examinării {inp(data, "data_exam", "31mm")}
       </div>
       <div class="row">
-        Nume {inp(data, "nume", "72mm")}
-        Prenume {inp(data, "prenume", "45mm")}
+        Nume {inp(data, "nume", "40mm")}
+        Prenume {inp(data, "prenume", "25mm")}
         Vârstă {inp(data, "varsta", "12mm")} ani,
         salon {inp(data, "salon", "16mm")}
       </div>
