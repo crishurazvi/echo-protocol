@@ -315,6 +315,7 @@ def render_protocol(data: dict) -> str:
     }
     .area {
       height: auto;
+width : 100%;
       resize: vertical;
       line-height: 1.2;
       vertical-align: top;
@@ -698,7 +699,7 @@ def render_protocol(data: dict) -> str:
 
       <div style="margin-top:2mm;">
         <b>Concluzie</b><br>
-        {area(data, "concluzie", 4, "conclusion", "120mm")}
+        {area(data, "concluzie", 4, "conclusion")}
       </div>
 
       <div class="signature">Medic examinator<br>{inp(data, "medic", "25mm")}</div>
