@@ -552,11 +552,11 @@ width : 100%;
       </div>
       <div class="row">
         Insuficiență mitrală: nu {cb(data, "im", "nu")} da {cb(data, "im", "da")}
-        severitate: {severity(data, "im", "37mm")}
+        severitate: {severity(data, "im", "12mm")}
       </div>
       <div class="row">
         SOR {inp(data, "sorim")} mm², VR {inp(data, "vrim")} ml, FR {inp(data, "frim")} %,
-        VC {inp(data, "vcim")} mm, dp/dt {inp(data, "dpdt", "25mm")} mmHg/s (&gt;1200mmHg/s)
+        VC {inp(data, "vcim")} mm, dp/dt {inp(data, "dpdt", "15mm")} mmHg/s (&gt;1200mmHg/s)
       </div>
       <div class="row">
         Flux vene pulmonare: S {inp(data, "vps")} cm/s, D {inp(data, "vpd")} cm/s,
@@ -601,7 +601,7 @@ width : 100%;
       </div>
       <div class="row">
         Stenoza tricuspidiană: nu {cb(data, "st", "nu")} da {cb(data, "st", "da")}
-        severitate: {severity(data, "st", "17mm")}
+        severitate: {severity(data, "st", "10mm")}
       </div>
       <div class="row">
         Pmed {inp(data, "pmedt")} mmHg, PHT {inp(data, "phtt")} ms,
@@ -609,7 +609,7 @@ width : 100%;
       </div>
       <div class="row">
         Insuficiență tricuspidiană: nu {cb(data, "it", "nu")} da {cb(data, "it", "da")}
-        severitate {severity(data, "it", "16mm")}
+        severitate {severity(data, "it", "10mm")}
         Vmax {inp(data, "vmaxtr")} cm/s,
         Pmax {inp(data, "pmaxt")} mmHg,
         PSAP {inp(data, "paps")} mmHg
