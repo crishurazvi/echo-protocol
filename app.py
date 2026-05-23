@@ -23,7 +23,7 @@ def asset_b64(name: str) -> str:
     return base64.b64encode((ASSETS / name).read_bytes()).decode("ascii")
 
 
-CINETICA_B64 = asset_b64("cinetica_parietala.png")
+CINETICA_B64 = asset_b64("cinetica.png")
 
 
 def norm_key(s: str) -> str:
