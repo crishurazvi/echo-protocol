@@ -664,22 +664,22 @@ def render_protocol(data: dict) -> str:
 
       <div class="row" style="margin-top:6mm;">
         Formațiuni intratriale: nu {cb(data, "formatiuniatriale", "nu")} da {cb(data, "formatiuniatriale", "da")}
-        descriere {inp(data, "descformatiuniatriale", "112mm")}
+        descriere {inp(data, "descformatiuniatriale", "12mm")}
       </div>
       <div class="row">
         Formațiuni intraventriculare: nu {cb(data, "formatiuniventriculare", "nu")} da {cb(data, "formatiuniventriculare", "da")}
-        descriere {inp(data, "descformatiuniventriculare", "104mm")}
+        descriere {inp(data, "descformatiuniventriculare", "10mm")}
       </div>
       <div class="row">
         Lichid pericardic: absent {cb(data, "pericard", "absent")}
         prezent {cb(data, "pericard", "prezent")}
-        cantitate {inp(data, "cantitatepericard", "35mm")}
+        cantitate {inp(data, "cantitatepericard", "13mm")}
         anterior {inp(data, "pericardant", "18mm")} cm,
         posterior {inp(data, "pericardpost", "18mm")} cm
       </div>
       <div class="row">
         Aspect pericard: normal {cb(data, "aspectpericard", "normal")}
-        patologic: {inp(data, "aspectpericard", "128mm")}
+        patologic: {inp(data, "aspectpericard", "28mm")}
       </div>
 
       <div class="section">Flux vena cava inferioară:</div>
@@ -698,7 +698,7 @@ def render_protocol(data: dict) -> str:
 
       <div style="margin-top:5mm;">
         <b>Concluzie</b><br>
-        {area(data, "concluzie", 4, "conclusion")}
+        {area(data, "concluzie", 3, "conclusion")}
       </div>
 
       <div class="signature">Medic examinator<br>{inp(data, "medic", "45mm")}</div>
