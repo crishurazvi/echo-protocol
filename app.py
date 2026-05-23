@@ -427,9 +427,9 @@ def render_protocol(data: dict) -> str:
         salon {inp(data, "salon", "16mm")}
       </div>
       <div class="row">
-        Înălțime {inp(data, "inaltime", "14mm")} cm,
-        Greutate {inp(data, "greutate", "15mm")} kg,
-        S<sub>corporală</sub> {inp(data, "scorp", "17mm")} m²;
+        Înălțime {inp(data, "inaltime", "10mm")} cm,
+        Greutate {inp(data, "greutate", "10mm")} kg,
+        S<sub>corporală</sub> {inp(data, "scorp", "8mm")} m²;
         Calitate imagine: bună {cb(data, "calitate", "buna")}
         satisfăcătoare {cb(data, "calitate", "satisfacatoare")}
         slabă {cb(data, "calitate", "slaba")}
@@ -438,8 +438,8 @@ def render_protocol(data: dict) -> str:
         Ritm sinusal {cb(data, "ritm", "sinusal")}
         Fibrilație atrială {cb(data, "ritm", "fibrilatie")}
         Ritm electrostimulat {cb(data, "ritm", "electrostimulat")}
-        {inp(data, "fc", "23mm")} b/min
-        {inp(data, "ta", "31mm")} mmHg
+        {inp(data, "fc", "10mm")} b/min
+        {inp(data, "ta", "15mm")} mmHg
       </div>
 
       <div class="section">Incidența parasternală:
@@ -496,10 +496,10 @@ def render_protocol(data: dict) -> str:
           <div class="row">MAPSE {inp(data, "mapse")} mm (&gt;10mm)</div>
         </div>
         <div class="right-mini">
-          <div class="row">dVS: {inp(data, "dvs", "15mm")} cm</div>
-          <div class="row">dVD: {inp(data, "dvd", "15mm")} cm</div>
-          <div class="row">dAD: {inp(data, "dad", "15mm")} cm</div>
-          <div class="row">dAS: {inp(data, "das", "15mm")} cm</div>
+          <div class="row">dVS: {inp(data, "dvs", "7mm")} cm</div>
+          <div class="row">dVD: {inp(data, "dvd", "7mm")} cm</div>
+          <div class="row">dAD: {inp(data, "dad", "7mm")} cm</div>
+          <div class="row">dAS: {inp(data, "das", "7mm")} cm</div>
         </div>
       </div>
 
