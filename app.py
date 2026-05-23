@@ -349,8 +349,9 @@ def render_protocol(data: dict) -> str:
       margin-top: 3mm;
     }
     .cinetica-img {
-      width: 100%;
+      width: 80%;
       display: block;
+      align: center;
     }
     .blank-wide {
       flex: 1;
