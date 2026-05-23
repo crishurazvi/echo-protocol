@@ -341,7 +341,7 @@ def render_protocol(data: dict) -> str:
     .right-mini .row {
       margin: 1.25mm 0;
     }
-    .cinetica-wrap {
+    .cinetica-wrap0 {
       display: grid;
       grid-template-columns: 1fr 45mm;
       column-gap: 6mm;
