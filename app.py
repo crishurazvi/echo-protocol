@@ -455,7 +455,7 @@ def render_protocol(data: dict) -> str:
       </div>
       <div class="row">
         Aspectul valvei aortice: normal {cb(data, "va", "normal")}
-        patologic: {inp(data, "va", "118mm")}
+        patologic: {inp(data, "va", "18mm")}
       </div>
       <div class="row">
         Diam AS {inp(data, "as")} cm (F: 2,7-3,8 cm, B:3-4 cm, &lt; 2,3 cm/m²),
@@ -483,7 +483,7 @@ def render_protocol(data: dict) -> str:
       </div>
       <div class="row">
         Aspectul valvei mitrale: normal {cb(data, "vm", "normal")}
-        patologic: {inp(data, "vm", "129mm")}
+        patologic: {inp(data, "vm", "29mm")}
       </div>
 
       <div class="two-col">
@@ -599,7 +599,7 @@ def render_protocol(data: dict) -> str:
       </div>
       <div class="row">
         Stenoza tricuspidiană: nu {cb(data, "st", "nu")} da {cb(data, "st", "da")}
-        severitate: {severity(data, "st", "37mm")}
+        severitate: {severity(data, "st", "17mm")}
       </div>
       <div class="row">
         Pmed {inp(data, "pmedt")} mmHg, PHT {inp(data, "phtt")} ms,
@@ -607,7 +607,7 @@ def render_protocol(data: dict) -> str:
       </div>
       <div class="row">
         Insuficiență tricuspidiană: nu {cb(data, "it", "nu")} da {cb(data, "it", "da")}
-        severitate {severity(data, "it", "36mm")}
+        severitate {severity(data, "it", "16mm")}
         Vmax {inp(data, "vmaxtr")} cm/s,
         Pmax {inp(data, "pmaxt")} mmHg,
         PSAP {inp(data, "paps")} mmHg
@@ -622,13 +622,13 @@ def render_protocol(data: dict) -> str:
       </div>
       <div class="row">
         Stenoza pulmonară: nu {cb(data, "sp", "nu")} da {cb(data, "sp", "da")}
-        severitate: {severity(data, "sp", "37mm")}
+        severitate: {severity(data, "sp", "17mm")}
         Pmed {inp(data, "pmedp")} mmHg,
         Scont {inp(data, "scontp")} cm²,
       </div>
       <div class="row">
         Insuficiența pulmonară: nu {cb(data, "ip", "nu")} da {cb(data, "ip", "da")}
-        severitate: {severity(data, "ip", "37mm")}
+        severitate: {severity(data, "ip", "17mm")}
         PHT {inp(data, "phtp")} ms,
         PDAP {inp(data, "pdap")} mmHg
       </div>
@@ -643,11 +643,7 @@ def render_protocol(data: dict) -> str:
         <div>
           <img class="cinetica-img" src="data:image/png;base64,{CINETICA_B64}">
         </div>
-        <div>
-          <div style="height:42mm;"></div>
-          <div class="row">Scor WMSI {inp(data, "wmsi", "23mm")}</div>
-          <div class="row">GLS {inp(data, "gls", "28mm")} % (&gt; -20%)</div>
-        </div>
+        
       </div>
 
       <div class="row" style="margin-top:5mm;">
