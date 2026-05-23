@@ -698,7 +698,7 @@ def render_protocol(data: dict) -> str:
 
       <div style="margin-top:2mm;">
         <b>Concluzie</b><br>
-        {area(data, "concluzie", 4, "conclusion")}
+        {area(data, "concluzie", 4, "conclusion", "120mm")}
       </div>
 
       <div class="signature">Medic examinator<br>{inp(data, "medic", "25mm")}</div>
