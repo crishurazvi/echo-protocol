@@ -183,11 +183,32 @@ def esc(s: str) -> str:
 
 
 def inp(data: dict, key: str, w: str = "42px", cls: str = "", ph: str = "") -> str:
-    return f'<input class="line {cls}" name="{esc(key)}" value="{esc(get(data, key))}" placeholder="{esc(ph)}" style="width:{w};">'
+    return (
+        f'<input class="line {esc(cls)}" '
+        f'name="{esc(key)}" '
+        f'data-key="{esc(key)}" '
+        f'value="{esc(get(data, key))}" '
+        f'placeholder="{esc(ph)}" '
+        f'style="width:{esc(w)};">'
+    )
 
 
 def area(data: dict, key: str, rows: int = 2, cls: str = "") -> str:
-    return f'<textarea class="line area {cls}" name="{esc(key)}" rows="{rows}">{esc(get(data, key))}</textarea>'
+    return (
+        f'<textarea class="line area {esc(cls)}" '
+        f'name="{esc(key)}" '
+        f'data-key="{esc(key)}" '
+        f'rows="{rows}">{esc(get(data, key))}</textarea>'
+    )
+
+
+def cb(data: dict, key: str, expected: str) -> str:
+    return (
+        f'<input type="checkbox" '
+        f'data-key="{esc(key)}" '
+        f'data-val="{esc(expected)}" '
+        f'{checked(data, key, expected)}>'
+    )
 
 
 def checked(data: dict, key: str, expected: str) -> str:
@@ -198,10 +219,6 @@ def checked(data: dict, key: str, expected: str) -> str:
     if value == exp or value.startswith(exp) or exp.startswith(value):
         return "checked"
     return ""
-
-
-def cb(data: dict, key: str, expected: str) -> str:
-    return f'<input type="checkbox" {checked(data, key, expected)}>'
 
 
 def severity(data: dict, key: str, w: str = "115px") -> str:
@@ -707,19 +724,117 @@ width : 100%;
     """
 
     js = """
-    <script>
-      function printProtocol() {
-        window.print();
-      }
-    </script>
-    """
+<script>
+function cleanValue(v) {
+  return String(v || '')
+    .replace(/\\r?\\n/g, ' ')
+    .replace(/;/g, ',')
+    .replace(/=/g, '-')
+    .replace(/^\\s+|\\s+$/g, '');
+}
+
+function generateCode() {
+  var map = {};
+  var order = [];
+
+  function put(k, v) {
+    k = String(k || '').trim();
+    v = cleanValue(v);
+    if (!k || !v) return;
+    if (!(k in map)) order.push(k);
+    map[k] = v;
+  }
+
+  var fields = document.querySelectorAll('input[name], textarea[name]');
+  for (var i = 0; i < fields.length; i++) {
+    var el = fields[i];
+    if (el.type === 'checkbox') continue;
+    put(el.getAttribute('name'), el.value);
+  }
+
+  var checks = document.querySelectorAll('input[type="checkbox"][data-key]');
+  for (var j = 0; j < checks.length; j++) {
+    var cb = checks[j];
+    if (cb.checked) {
+      put(cb.getAttribute('data-key'), cb.getAttribute('data-val'));
+    }
+  }
+
+  var out = [];
+  for (var k = 0; k < order.length; k++) {
+    var key = order[k];
+    out.push(key + '=' + map[key]);
+  }
+
+  var code = out.join(';');
+  var box = document.getElementById('updatedCodeBox');
+  if (box) box.value = code;
+  return code;
+}
+
+function copyUpdatedCode() {
+  var code = generateCode();
+  var box = document.getElementById('updatedCodeBox');
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).then(function() {
+      alert('Codul actualizat a fost copiat.');
+    }).catch(function() {
+      box.focus();
+      box.select();
+      document.execCommand('copy');
+      alert('Codul actualizat a fost selectat/copiat.');
+    });
+  } else {
+    box.focus();
+    box.select();
+    document.execCommand('copy');
+    alert('Codul actualizat a fost selectat/copiat.');
+  }
+}
+
+function printProtocol() {
+  window.print();
+}
+
+function attachAutoUpdate() {
+  generateCode();
+
+  document.addEventListener('input', function(e) {
+    if (e.target && e.target.id !== 'updatedCodeBox') {
+      generateCode();
+    }
+  });
+
+  document.addEventListener('change', function(e) {
+    if (e.target && e.target.id !== 'updatedCodeBox') {
+      generateCode();
+    }
+  });
+}
+
+window.addEventListener('load', attachAutoUpdate);
+setTimeout(attachAutoUpdate, 500);
+</script>
+"""
 
     toolbar = """
-    <div class="toolbar">
-      <button onclick="printProtocol()">🖨️ Imprimă protocolul</button>
-      <span style="margin-left:12px;color:#555;">Poți edita direct câmpurile înainte de print.</span>
-    </div>
-    """
+<div class="toolbar">
+  <button onclick="printProtocol()">🖨️ Imprimă protocolul</button>
+  <button onclick="generateCode()">🔄 Actualizează codul</button>
+  <button onclick="copyUpdatedCode()">📋 Copiază codul actualizat</button>
+  <div style="margin-top:8px;">
+    <textarea
+      id="updatedCodeBox"
+      style="width:96%;height:48px;font-family:Consolas,monospace;font-size:12px;"
+      placeholder="Aici apare codul actualizat după ce modifici formularul"
+    ></textarea>
+  </div>
+  <div style="font-size:12px;color:#555;margin-top:4px;">
+    Poți edita direct câmpurile. Codul de mai sus se actualizează automat și poate fi refolosit în bookmarklet.
+  </div>
+</div>
+"""
 
     return "<!doctype html><html><head><meta charset='utf-8'>" + css + "</head><body>" + js + toolbar + p1 + p2 + "</body></html>"
 
